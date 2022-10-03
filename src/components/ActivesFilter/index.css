@@ -1,0 +1,73 @@
+.filter-item {
+
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    padding: 0.5%;
+}
+
+
+.filter-item-text, .filter-item-text-css {
+
+    color: #64baba;
+    background-color: #edf6f6;
+    border-radius: 5%;
+    
+}
+
+.filter-item-text {
+
+    padding: 6.5% 20%;
+}
+
+.filter-item-text-css {
+
+    padding: 8% 20%;
+}
+
+.close-item {
+
+    background-color: #64baba;
+    border-radius: 0 10% 10% 0;
+    color: white;
+    cursor: pointer;
+    font-size: 1.23rem;
+    padding: 3.5% 0.9rem;
+}
+
+@media screen and (min-width: 200px) and (max-width: 360px) {
+    
+
+    .filter-item-text, .close-item, .filter-item-text-css {
+
+        font-size: 80%;
+    }
+
+    .filter-item-text, .filter-item-text-css {
+
+        padding: 5%;
+    }
+
+    .close-item {
+
+        padding: 4.5% 0.5rem;
+    }
+}
+
+
+@media screen and (min-width: 361px) and (max-width: 900px) {
+    
+    .close-item {
+
+        font-size: 1rem;
+        padding: 2% 0.45rem;
+
+    }
+
+    .filter-item-text {
+
+        padding: 6.5% 10%;
+    }
+}
+
+

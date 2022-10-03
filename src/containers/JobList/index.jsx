@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import './index.css'
 
 const JobList = ({company, children}) => {     
@@ -12,4 +13,4 @@ const JobList = ({company, children}) => {
   )
 }
 
-export default JobList
+export default memo(JobList);

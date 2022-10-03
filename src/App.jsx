@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react'
 import {jobs} from './data/data';
 import Header from './components/Header';
-import JobList from './components/JobList';
+import JobList from './containers/JobList';
 import JobLogo from './components/JobLogo';
 import JobMainInfo from './components/JobMainInfo';
 import JobPositionInfo from './components/JobPositionInfo';
-import JobRequirements from './components/JobRequirements';
+import JobRequirements from './containers/JobRequirements';
 import JobRoleLevel from './components/JobRoleLevel';
 import JobProgrammingLanguagesRequirement from './components/JobProgrammingLanguagesRequirement';
 import JobToolsRequirement from './components/JobToolsRequirement';
 import './App.css';
+import ActivesFilters from './components/ActivesFilter';
+import ActivesFiltersContainer from './containers/ActivesFiltersContainer';
 
 const App = () => {
 
@@ -29,14 +31,17 @@ const App = () => {
   const handlerClick = (item, itemType) => {
 
     filterJobs(item, itemType)
-    setFilterRequirements(prev => [item, ...prev])
+
+    if(!filterRequirements.includes(item)) return setFilterRequirements(prev => [item, ...prev])
+
+    return setFilterRequirements(prev => prev.filter(prevItem => prevItem !== item))
   }
 
   useEffect(() => {
 
-    setFilteredJobs(state)
+    if(!filterRequirements.length > 0) setFilteredJobs(state)
 
-  }, [state]);
+  }, [state, filterRequirements]);
 
   return (
 
@@ -44,6 +49,17 @@ const App = () => {
 
       <Header />
 
+      {filterRequirements.length > 0 &&  
+
+        <ActivesFiltersContainer setFilterRequirements={setFilterRequirements}>
+
+          {filterRequirements.map(req => 
+            <ActivesFilters key={req} filterItem={req} setFilterRequirements={setFilterRequirements} /> ) 
+          }
+
+        </ActivesFiltersContainer>   
+      }
+     
       <section className='container'>
 
         {filteredJobs.map(job => 
