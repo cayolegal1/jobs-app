@@ -1,0 +1,46 @@
+.main-info-vacancy {
+
+    display: flex;
+    flex-direction: column;
+    gap: 12%;
+}
+
+.main-info-vacancy-header {
+
+    display: flex;
+    gap: 3%;
+}
+
+.main-info-vacancy-header h6 {
+
+    color: #64baba;
+    font-weight: 600;
+    font-size: 95%;
+}
+
+.main-info-vacancy-header p, .main-info-vacancy-header span {
+
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    padding: 0.094rem 0.39rem;
+    font-size: 80%; 
+}
+
+.main-info-vacancy-header p {
+
+    background: #64baba;
+}
+
+.main-info-vacancy-header span {
+
+    background: black;
+}
+
+@media screen and (min-width: 200px) and (max-width: 999px) {
+    
+    .main-info-vacancy div:not(.main-info-vacancy div:first-child) {
+
+        margin-top: 1rem;
+    }
+}

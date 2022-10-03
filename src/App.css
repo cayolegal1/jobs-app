@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+body {
+
+  background: #f0fafa !important;
+  overflow-y: scroll;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 3%;
+  margin: 8% 10%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+ul li {
+
+  list-style: none;
+}
+
+.requirement, .selected-requirement {
+
+  border-radius: 10%;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1%;
+  transition: 0.5s;
+}
+
+.requirement {
+  
+  color: #64a29a;
+  background-color: #edf6f6;
+
+}
+
+.requirement:hover {
+
+  background-color: #5fa4a4;
+  color: #edf6f6;
+  transition: 0.5s;
+}
+
+.selected-requirement {
+
+  background-color: #5fa4a4;
+  color: #edf6f6;
+  transition: 0.5s;
+}
+
+
+@media screen and (min-width: 200px) and (max-width: 999px) {
+  
+
+  .container {
+    gap: 2%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media screen and (min-width: 200px) and (max-width: 410px) {
+  
+  .container {
+
+    margin: 30% 10%;
+  }
+
 }
 
-.App-link {
-  color: #61dafb;
+@media screen and (min-width: 411px) and (max-width: 550px) {
+  
+  .container {
+
+    margin: 23% 10%;
+  }
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width: 551px) and (max-width: 700px) {
+  
+  .container {
+
+    margin: 15% 10%;
   }
-  to {
-    transform: rotate(360deg);
-  }
+  
 }
+
+@media screen and (min-width: 701px) and (max-width: 999px) {
+  
+  .container {
+
+    margin: 10%;
+  }
+  
+}
+

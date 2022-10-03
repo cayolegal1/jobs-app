@@ -1,0 +1,26 @@
+.img-container {
+
+    width: 100%;
+    cursor: pointer;
+}
+  
+.img-container img {
+  
+    margin: auto;
+}
+
+
+@media screen and (min-width: 200px) and (max-width: 999px) {
+    
+    .img-container {
+
+        max-height: 1px;
+    }
+
+    .img-container img {
+  
+        height: 3rem;
+        margin: 0;
+        transform: translateY(-64%);
+    }
+}

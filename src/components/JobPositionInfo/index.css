@@ -1,0 +1,12 @@
+.main-info-vacancy-information p {
+
+    color: #99a3a2;
+    display: flex;
+    font-size: 85%;
+    gap: 3%;
+}
+  
+.point {
+  
+    transform: translate(0px, -3px);
+}

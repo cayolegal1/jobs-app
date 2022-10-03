@@ -1,0 +1,16 @@
+.requirements-section {
+
+    display: flex;
+    gap: 3%;
+    align-items: center;
+}
+
+@media screen and (min-width: 200px) and (max-width: 999px) {
+    
+    .requirements-section {
+
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+}

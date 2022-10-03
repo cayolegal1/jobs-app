@@ -1,0 +1,58 @@
+.job, .first-jobs {
+
+    background: #ffffff;
+    border-radius: 1rem;
+    display: grid;
+    gap: 2%;
+    grid-template-columns: 0.5fr 1.5fr 3fr;
+    padding: 2% 1%;
+}
+  
+.first-jobs {
+
+border-left: 0.27rem solid #64baba;
+}
+
+.job:last-child {
+
+margin-bottom: 10%;
+}
+
+@media screen and (min-width: 200px) and (max-width: 999px) {
+    
+    .job, .first-jobs {
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 1fr 0fr 1fr 0.2fr;
+        padding: 1% 7%;
+        row-gap: 8%;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1250px) {
+    
+    .job, .first-jobs {
+
+        grid-template-columns: 0.5fr 1.5fr 0 3fr;
+    }
+
+}
+
+@media screen and (min-width: 1251px) and (max-width: 1309px) {
+    
+    .job, .first-jobs {
+
+        grid-template-columns: 0.5fr 1.5fr 0 2.5fr;
+    }
+
+}
+
+
+@media screen and (min-width: 1310px) {
+    
+    .job, .first-jobs {
+
+        grid-template-columns: 0.5fr 2fr 0fr 2fr;
+    }
+}
