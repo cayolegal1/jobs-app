@@ -1,3 +1,4 @@
+import './index.css'
 
 const JobRoleLevel = ({role, level,  filterRequirements, setFilterRequirements, handlerClick}) => {
 

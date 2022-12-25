@@ -3,3 +3,19 @@ header {
     background: #64baba;
     height: 15vh;
 }
+
+.navbar {
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 4%;
+    margin-right: 5%;
+    font-size: 84%;
+}
+
+.navbar li {
+
+    color: #edf6f6;
+    margin-top: 5%;
+
+}

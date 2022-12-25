@@ -1,100 +1,38 @@
-import { useEffect, useState } from 'react';
-import { ChakraProvider } from '@chakra-ui/react'
-import {jobs} from './data/data';
+import { useState } from 'react';
+import {HashRouter, Routes, Route} from 'react-router-dom'
+import { ChakraProvider } from '@chakra-ui/react';
+import Home from './containers/Home';
 import Header from './components/Header';
-import JobList from './containers/JobList';
-import JobLogo from './components/JobLogo';
-import JobMainInfo from './components/JobMainInfo';
-import JobPositionInfo from './components/JobPositionInfo';
-import JobRequirements from './containers/JobRequirements';
-import JobRoleLevel from './components/JobRoleLevel';
-import JobProgrammingLanguagesRequirement from './components/JobProgrammingLanguagesRequirement';
-import JobToolsRequirement from './components/JobToolsRequirement';
-import './App.css';
-import ActivesFilters from './components/ActivesFilter';
-import ActivesFiltersContainer from './containers/ActivesFiltersContainer';
+import './App.css'
+import {jobs} from './data';
+import CreateJob from './components/CreateJob';
 
 const App = () => {
 
-  const [state] = useState(jobs);
-  const [filteredJobs, setFilteredJobs] = useState([]);
-  const [filterRequirements, setFilterRequirements] = useState([]);
-
-  const filterJobs = (job, filterParam) => {
-
-      if(Array.isArray(filteredJobs[0][filterParam]))
-        return setFilteredJobs(prev => prev.filter(item => item[filterParam]?.some(item2 => item2 === job)));
-
-      setFilteredJobs(prev => prev.filter(item => item[filterParam] === job));       
-  };
-
-  const handlerClick = (item, itemType) => {
-
-    filterJobs(item, itemType)
-
-    if(!filterRequirements.includes(item)) return setFilterRequirements(prev => [item, ...prev])
-
-    return setFilterRequirements(prev => prev.filter(prevItem => prevItem !== item))
-  }
-
-  useEffect(() => {
-
-    if(!filterRequirements.length > 0) setFilteredJobs(state)
-
-  }, [state, filterRequirements]);
+  const [state, setState] = useState(jobs);
 
   return (
 
-    <ChakraProvider >
+    <HashRouter>
 
-      <Header />
+      <ChakraProvider>
+      
+        <Header />
 
-      {filterRequirements.length > 0 &&  
+        <Routes>
 
-        <ActivesFiltersContainer setFilterRequirements={setFilterRequirements}>
+          <Route path='/' element={<Home state={state}/>} />
 
-          {filterRequirements.map(req => 
-            <ActivesFilters key={req} filterItem={req} setFilterRequirements={setFilterRequirements} /> ) 
-          }
+          <Route path='/create' element={<CreateJob setState={setState} />} />
 
-        </ActivesFiltersContainer>   
-      }
-     
-      <section className='container'>
+          <Route path='/*' element={<h1>Not found</h1>} />
 
-        {filteredJobs.map(job => 
+        </Routes>
 
-          <JobList key={job.id}>
+      </ChakraProvider>
 
-            <JobLogo logo={job.logo} company={job.company} />
+    </HashRouter>
 
-            <JobMainInfo {...job} >
-
-              <JobPositionInfo {...job} />
-
-            </JobMainInfo>
-
-            <JobRequirements 
-              setFilterRequirements={setFilterRequirements} 
-              filterRequirements={filterRequirements}
-              handlerClick={handlerClick} >
-
-              <JobRoleLevel role={job.role} level={job.level} />
-
-              {job.languages.map(language => <JobProgrammingLanguagesRequirement key={language} language={language} />)}
-
-
-              {job.tools.map(tool => <JobToolsRequirement key={tool} tool={tool} />)}
-
-            </JobRequirements>
-
-          </JobList>
-
-        )}
-
-      </section>
-
-    </ChakraProvider>
   );
 }
 
